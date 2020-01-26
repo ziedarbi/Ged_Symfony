@@ -1,0 +1,122 @@
+ 
+
+{% extends 'base.html.twig' %}
+
+
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Gestion Type documents
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href="{{ path('homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Gestion type documents  </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+<section class="invoice">
+    <!-- title row -->
+
+    <div class="row" align="center">
+        <h2> Ajouter Type document
+        </h2>   </div>
+    <div class="row">
+
+
+        {{ form_start(form, {'action': path('TypeDocument_new'), 'method': 'POST'}) }}
+        {{ form_errors(form) }}
+
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.titre) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.titre) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.dossier) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.dossier) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.roleutilisateur) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.roleutilisateur) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.pecheance) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.pecheance) }}
+            </div>
+        </div>
+         <div class="row" id="nbrejournotif" style="display:block;">
+            <div class="col-md-4">
+                {{ form_label(form.nbrejournotif) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.nbrejournotif) }}
+            </div>
+        </div>
+
+
+        <br/>
+        <div class="row" align="center">
+            <div class="col-lg-4">
+                <a href="{{ path('TypeDocument_index') }}" class="btn btn-default">Retour à la liste</a>
+
+            </div>
+            <div class="col-lg-8">
+                <input type="submit" value="Enregister" class="btn btn-primary" />
+            </div>
+
+        </div>
+        {{ form_end(form) }}
+
+
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+
+    var idtype="0";
+
+    $('#appbundle_sujetdoc_pecheance').on('change', function() {
+// problem get p echeance
+        //idtype=parseInt(this.value);
+
+
+        if(this.value =='Oui'){
+
+            $('#nbrejournotif').css('display','block');
+        }else{
+
+
+            $('#nbrejournotif').css('display','none');
+        }
+
+
+
+    })
+</script>
+ {% endblock %}

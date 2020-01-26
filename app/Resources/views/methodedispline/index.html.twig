@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+ 
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Gestion Methode
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href=""><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Liste des methodes  </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+<section class="invoice">
+    <!-- title row -->
+
+
+    <div class="row">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Liste des methodes  </h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+
+            <div class="box-body">
+                <div class="chart">
+
+                    <div class="col-xs-12 table-responsive">
+                        <div class="row"> <a    class="btn btn-default" href="{{ path('methodedispline_new') }}"> Ajouter methode </a> </div>
+                        <br/>
+                        <table  id="tablisteemployes" class="table table-bordered table-hover">
+
+
+        <thead>
+            <tr>
+
+                <th>famille</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for methodeDispline in methodeDisplines %}
+            <tr>
+
+                <td align="center">{{ methodeDispline.idfamilleInsp }}</td>
+                <td align="center">{{ methodeDispline.nom }}</td>
+
+                <td align="center">
+
+
+                    <a href="{{ path('methodedispline_show', { 'id': methodeDispline.id }) }}"><i class="fa fa-eye primary" aria-hidden="true"></i></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        &nbsp;
+                        <a href="{{ path('methodedispline_edit', { 'id': methodeDispline.id }) }}"> <i class="fa fa-edit" aria-hidden="true"></i></a>
+
+
+                    {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function () {
+            $('#tablisteemployes').DataTable({
+                    "pageLength": 10
+                }
+            )})
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+ 
+
+
+{% extends 'base.html.twig' %}
+
+
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Accé Non autorisé
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href="{{  path('homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Accé Non autorisé </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+    <div align="center">
+        <div class="panel-body">
+            <h3  style="color:red" > Vous n'avez pas l'autorisation d'accéder à cette page </h3>
+            <p></p>
+            <a class="btn btn-default" href="{{ path('homepage') }}" > Retour</a>
+        </div>
+    </div>
+
+{% endblock %}
+

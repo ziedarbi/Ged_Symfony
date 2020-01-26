@@ -1,0 +1,311 @@
+{% extends 'base.html.twig' %}
+ 
+
+    {% block stylesheets %}
+   <script src="{{ asset('theme/js_highcharts/highcharts.js') }}"></script>
+<script src="{{ asset('theme/js_highcharts/series-label.js') }}"></script>
+<script src="{{ asset('theme/js_highcharts/exporting.js') }}"></script>
+<script src="{{ asset('theme/js_highcharts/export-data.js') }}"></script>
+
+
+    {% endblock %}
+{% block contentheader %}
+    <section class="content-header">
+        <h1>
+           Resulat de Production Journalier :
+            <small><h4><b> PCStrand</b></h4> </small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active">Bilan journalier de production</li>
+        </ol>
+    </section>
+
+{% endblock %}
+{% block Maincontent %}
+    <!-- Small boxes (Stat box) -->
+    <section class="invoice">
+        <!-- title row -->
+
+    <div class="row" align="center">
+        <h2> Nombre d'heures de production par Jour
+        </h2>   </div>
+        <!-- /.row -->
+
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Hier (03-05-2018)</th>
+                        <th>Aujourd'hui( 04-05-2018 ) </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Nombre Total d'heures </td>
+
+                        <td>64.50</td>
+                        <td>100.50</td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+<div class="row">
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Nombre Total d'heures de production </h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="chart">
+
+                <div id="container"></div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>
+<div class="row"> Nombre Total d'heures de production  par equipe </div>
+
+<div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>  </th>
+                        <th>Hier (03-05-2018)  </th>
+                        <th> Aujourd'hui( 04-05-2018 ) equipe 2</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> equipe 1 </td>
+
+                        <td>64.50</td>
+                         <td>64.50</td>
+
+                    </tr>
+                    <tr>
+                        <td> equipe 2</td>
+
+                        <td>64.50</td>
+                         <td>64.50</td>
+
+                    </tr>
+        <tr>
+                        <td> equipe 3</td>
+
+                        <td>64.50</td>
+                         <td>64.50</td>
+
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+<div class="row">
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Nombre Total d'heures de production par equipe </h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="chart">
+
+                <div id="container2"></div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>
+
+
+
+        <!-- this row will not appear when printing -->
+        <div class="row no-print">
+            <div class="col-xs-12">
+
+                <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+                    <i class="fa fa-download"></i> Generate Excel
+                </button>
+            </div>
+        </div>
+{% endblock %}
+{% block javascripts %}
+
+<script>
+// Create the chart
+Highcharts.chart('container2', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ' '
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: 'Nombre  d heures de production  '
+        }
+
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:.1f}%'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+
+    "series": [
+        {
+            "name": "Browsers",
+            "colorByPoint": true,
+            "data": [
+                {
+                    "name": "equipe 1",
+                    "y": 62.74,
+                    "drilldown": "equipe 1"
+                },
+                  {
+                    "name": "equipe 2",
+                    "y": 62.74,
+                    "drilldown": "equipe 2"
+                },
+                {
+                    "name": "equipe 3",
+                    "y": 10.57,
+                    "drilldown": "equipe 3"
+                }
+
+            ]
+        }]
+
+
+
+});
+
+// Create the chart
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Browser market shares. January, 2018'
+    },
+    subtitle: {
+        text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: 'Nombre des heures de production'
+        }
+
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:.1f}%'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+
+    "series": [
+        {
+            "name": "Browsers",
+            "colorByPoint": true,
+            "data": [
+                {
+                    "name": "Hier () ",
+                    "y": 62.74,
+                    "drilldown": "Chrome"
+                },
+
+                {
+                    "name": "aujourd'hui()",
+                    "y": 7.62,
+                    "drilldown": null
+                }
+            ]
+        }
+    ],
+    "drilldown": {
+        "series": [
+
+            {
+                "name": "Opera",
+                "id": "Opera",
+                "data": [
+                    [
+                        "v50.0",
+                        0.96
+                    ],
+                    [
+                        "v49.0",
+                        0.82
+                    ],
+                    [
+                        "v12.1",
+                        0.14
+                    ]
+                ]
+            }
+        ]
+    }
+});
+</script>
+
+{% endblock %}

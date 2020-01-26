@@ -1,0 +1,60 @@
+
+{% extends 'base.html.twig' %}
+
+ 
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Modifier  Document
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href=""><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Modifier document </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+
+    <div class="chart">
+
+        <div class="row">
+            <div align="center">
+                <div class="col-sm-9 col-sm-offset-1  col-md-6 col-md-offset-3" style="background-color:white;">
+
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+                        <div class="alert alert-success" id="successMessage">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            {{ flashMessage }}
+                        </div>
+
+                    {% endfor %}
+
+
+                    {{ form_start(edit_form) }}
+                    {{ form_widget(edit_form) }}
+                    <br/>
+                    <div align="center">
+                        <input type="submit"  class="btn btn-info btn-sm" value="Modifier"  />
+                    </div>
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+        </div>
+        <br/>
+        <hr/>
+        <div class="row">
+            <div align="center" class="col-lg-6">
+                <a  class="btn btn-default"  href="{{ path('doc_index') }}">Retour à liste</a>
+            </div>
+            <div align="center" class="col-lg-6" >
+                {{ form_start(delete_form) }}
+                <input  class="btn btn-default"  type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

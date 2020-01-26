@@ -1,0 +1,136 @@
+
+{% extends 'base.html.twig' %}
+ 
+
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Modifier  Document
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href=""><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Modifier document </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+
+    <div class="chart">
+
+        <div class="row">
+            <div align="center">
+                <div class="col-sm-9 col-sm-offset-1  col-md-9 col-md-offset-2" style="background-color:white;">
+
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+                        <div class="alert alert-success" id="successMessage">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            {{ flashMessage }}
+                        </div>
+
+                    {% endfor %}
+                    {{ form_start(edit_form) }}
+
+                    {{ form_errors(edit_form) }}
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ form_label(edit_form.titre) }}
+                        </div>
+                        <p></p>
+                        <div class="col-md-3">
+                            {{ form_widget(edit_form.titre) }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ form_label(edit_form.dossier) }}
+                        </div>
+                        <p></p>
+                        <div class="col-md-3">
+                            {{ form_widget(edit_form.dossier) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ form_label(edit_form.roleutilisateur) }}
+                        </div>
+                        <p></p>
+                        <div class="col-md-3">
+                            {{ form_widget(edit_form.roleutilisateur) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ form_label(edit_form.pecheance) }}
+                        </div>
+                        <p></p>
+                        <div class="col-md-3">
+                            {{ form_widget(edit_form.pecheance) }}
+                        </div>
+                    </div>
+                    <div class="row" id="nbrejournotif" style="display:block;">
+                        <div class="col-md-4">
+                            {{ form_label(edit_form.nbrejournotif) }}
+                        </div>
+                        <p></p>
+                        <div class="col-md-3">
+                            {{ form_widget(edit_form.nbrejournotif) }}
+                        </div>
+                    </div>
+
+
+
+
+                    <br/>
+                    <div align="center">
+                        <input type="submit"  class="btn btn-info btn-sm" value="Modifier"  />
+                    </div>
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+        </div>
+        <br/>
+        <hr/>
+        <div class="row">
+            <div align="center" class="col-lg-6">
+                <a  class="btn btn-default"  href="{{ path('TypeDocument_index') }}">Retour à liste</a>
+            </div>
+            <div align="center" class="col-lg-6" >
+                {{ form_start(delete_form) }}
+                <input  class="btn btn-default"  type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+
+        var idtype="0";
+
+        $('#appbundle_sujetdoc_pecheance').on('change', function() {
+// problem get p echeance
+            //idtype=parseInt(this.value);
+
+
+            if(this.value =='Oui'){
+
+                $('#nbrejournotif').css('display','block');
+            }else{
+
+
+                $('#nbrejournotif').css('display','none');
+            }
+
+
+
+        })
+    </script>
+{% endblock %}

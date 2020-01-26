@@ -1,0 +1,84 @@
+
+
+ 
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-laptop"></i>
+        <span> Gestion des documents </span>
+        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+    </a>
+
+    <ul class="treeview-menu">
+
+        <li><a href="{{ path('doc_index') }}"><i class="fa fa-circle-o"></i>  Liste des documents </a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('doc_new')}}"><i class="fa fa-circle-o"></i>Ajout document </a></li>
+        <li><a href="{{ path('doctechnique_new')}}"><i class="fa fa-circle-o"></i>Ajout document technique </a></li>
+        <li><a href="{{ path('resRecherche')}}"><i class="fa fa-circle-o"></i>Recherche document technique </a></li>
+        {% endif  %}
+        {% if is_granted('ROLE_RESPFORMATION') %}
+
+            <li><a href="{{ path('doctechnique_new')}}"><i class="fa fa-circle-o"></i>Ajout document technique </a></li>
+
+        {% endif  %}
+
+        {% if is_granted('ROLE_RH') %}
+            <li><a href="{{ path('doc_new')}}"><i class="fa fa-circle-o"></i>Ajout document </a></li>
+
+            <li><a href="{{ path('Listeecheance')}}"><i class="fa fa-circle-o"></i>Liste echeances  </a></li>
+        {% endif  %}
+    </ul>
+</li>
+
+<li >
+    <a href="{{ path('TypeDocument_index') }}">
+        <i class="fa fa-laptop"></i>
+        <span> Type Documents</span>
+
+    </a>
+
+</li>
+
+
+<li><a href="{{ path('employe_index') }}"><i class="fa fa-users"></i> <span>Liste des  personnels</span></a></li>
+
+{% if is_granted('ROLE_ADMIN') %}
+
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span> Gérer utilisateurs</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+
+        <ul class="treeview-menu">
+
+            <li><a href="{{ path('ListeUtilisateurs') }}"><i class="fa fa-circle-o"></i>  Liste de utilisateurs </a></li>
+            <li><a href="{{ path('fos_user_registration_register')}}"><i class="fa fa-circle-o"></i>Ajout d'utilisateur </a></li>
+        </ul>
+    </li>
+
+    <li><a href="{{ path('EnvoiMailNotif') }}"><i class="fa fa-users"></i> <span>Liste des  échéances</span></a></li>
+
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span> Gérer types </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+
+        <ul class="treeview-menu">
+
+            <li><a href="{{ path('familleinsp_index') }}"><i class="fa fa-circle-o"></i>  Gestion famille </a></li>
+            <li><a href="{{ path('methodedispline_index')}}"><i class="fa fa-circle-o"></i>Gestion Methode </a></li>
+            <li><a href="{{ path('procede_index')}}"><i class="fa fa-circle-o"></i>Gestion Procede </a></li>
+        
+        </ul>
+    </li>
+{% endif %}

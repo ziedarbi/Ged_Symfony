@@ -1,0 +1,27 @@
+
+{#  {% extends "@FOSUser/layout.html.twig" %} #}
+{% extends 'base.html.twig' %}
+
+ 
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Gestion utilisateurs
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href=""><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Modifier utilisateur </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+    <div align="center">
+{% block fos_user_content %}
+{% include "@FOSUser/Profile/edit_content.html.twig" %}
+{% endblock fos_user_content %}
+
+    </div>
+{% endblock %}

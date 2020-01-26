@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Gestion Type documents
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href="{{ path('homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Gestion Procede  </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+<section class="invoice">
+    <!-- title row -->
+
+    <div class="row" align="center">
+        <h2> Ajouter une procede
+        </h2>   </div>
+    <div class="row">
+
+    <h1>Procede creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    </div>
+</section>
+{% endblock %}

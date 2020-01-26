@@ -1,0 +1,48 @@
+
+ 
+{% extends 'base.html.twig' %}
+
+
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Gestion Personel
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href=""><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Ajout  personnel  </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+<section class="invoice">
+    <!-- title row -->
+
+    <div class="row" align="center">
+        <h2> Ajouter Personnel
+        </h2>   </div>
+    <div class="row">
+    <h1></h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <br/>
+        <div class="row" align="center">
+            <div class="col-lg-4">
+                <a href="{{ path('employe_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+            </div>
+            <div class="col-lg-8">
+                <input type="submit" value="Enregister" class="btn btn-primary" />
+            </div>
+
+        </div>
+    {{ form_end(form) }}
+
+
+    </div>
+</section>
+{% endblock %}

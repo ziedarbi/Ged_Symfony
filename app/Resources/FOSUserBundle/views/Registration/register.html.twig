@@ -1,0 +1,26 @@
+{# {% extends "@FOSUser/layout.html.twig" %} #}
+
+{% extends 'base.html.twig' %}
+
+ 
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                Ajouter Utilisateur
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href=""><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Ajouter Utilisateur </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+{% block fos_user_content %}
+    <div align="center">
+{% include "@FOSUser/Registration/register_content.html.twig" %}
+    </div>
+{% endblock fos_user_content %}
+{% endblock %}

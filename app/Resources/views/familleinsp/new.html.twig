@@ -1,0 +1,38 @@
+
+
+{% extends 'base.html.twig' %}
+
+
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Gestion Famille
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href="{{ path('homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Gestion Famille  </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+<section class="invoice">
+    <!-- title row -->
+
+    <div class="row" align="center">
+        <h2> Ajouter une famille
+        </h2>   </div>
+    <div class="row">
+
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Ajouter" />
+    {{ form_end(form) }}
+
+    </div>
+</section>
+{% endblock %}
+

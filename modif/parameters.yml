@@ -1,0 +1,15 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 	ziedabicbrziad.mysql.db
+    database_port: 21
+    database_name: ziedabicbrziad
+    database_user: ziedabicbrziad
+    database_password: escisg2224BAC
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: parislittre@gmail.com
+    mailer_password: zied12345
+    secret: ea789d02f27ea56173c2a83f55d61ff9217bf20a
+    pathmedia: 'C:\wamp64\www\ged-ziad\web\uploads\'
+    mailRh: ziedarbi8@gmail.com
+

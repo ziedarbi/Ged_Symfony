@@ -1,0 +1,70 @@
+ 
+
+
+{% extends 'base.html.twig' %}
+
+
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Gestion utilisateurs
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href=""><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Consulter  utilisateur </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+    <div align="center">
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover">
+                <tbody>
+
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ user.username}}</td>
+                </tr>
+                <tr>
+                    <th>email</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th>Role</th>
+                    <td>{% for role in user.roles %}
+                            {{ role }} <br>
+                        {% endfor %} </td>
+                </tr>
+
+                <tr>
+                    <th>etat</th>
+                    <td>
+                        {% if user.enabled %}
+                            Activer
+
+                        {% else %}
+                            Désactiver
+                        {% endif %}
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <th>Dernière connexion</th>
+                    <td>
+
+                        {{ user.lastLogin|date('Y-m-d H:i:s') }}
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

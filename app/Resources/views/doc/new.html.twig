@@ -1,0 +1,145 @@
+ 
+
+{% extends 'base.html.twig' %}
+{%  block stylesheets %}
+
+{% endblock %}
+     {% block contentheader %}
+         <section class="content-header">
+             <h1>
+                 Gestion documents
+
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href="{{ path('homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                 <li class="active">Gestion documents  </li>
+             </ol>
+         </section>
+
+     {% endblock %}
+
+{% block Maincontent %}
+<section class="invoice">
+    <!-- title row -->
+
+    <div class="row" align="center">
+        <h2> Ajouter  document
+        </h2>   </div>
+    <div class="row">
+
+  {#  {{ form_start(form) }}
+        {{ form_widget(form) }}   #}
+        {{ form_start(form, {'action': path('doc_new'), 'method': 'POST'}) }}
+        {{ form_errors(form) }}
+
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.nom) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.nom) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.fichier) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.fichier) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.idEmploye) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.idEmploye) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.typeDoc) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.typeDoc) }}
+            </div>
+        </div>
+
+
+
+        <div class="row" style="visibility:visible;" id="divetat">
+            <div class="col-md-4">
+                {{ form_label(form.etat) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.etat) }}
+            </div>
+        </div>
+
+        <div class="row" id="datevalidite" style="display:block;">
+            <div class="col-md-4">
+                {{ form_label(form.date_validite) }}
+            </div>
+            <p></p>
+            <div class="col-md-3">
+                {{ form_widget(form.date_validite,{'id':'datetime1','attr':{'readonly':true }}) }}
+
+            </div>
+        </div>
+
+        <br/>
+        <div class="row" align="center">
+            <div class="col-lg-4">
+                <a href="{{ path('doc_index') }}" class="btn btn-default">Retour à la liste</a>
+
+            </div>
+            <div class="col-lg-8">
+                <input type="submit" value="Enregister" class="btn btn-primary" />
+            </div>
+
+        </div>
+        {{ form_end(form) }}
+
+
+    </div>
+</section>
+    <div id="echeancesdocs" data-is-test="{{ echeancesdocs.pecheance|json_encode }}" style="visibility: hidden"></div>
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+
+        var idtype="0";
+
+        $('#appbundle_doc_typeDoc').on('change', function() {
+// problem get p echeance
+            idtype=parseInt(this.value);
+
+
+            var echeancesdocs = $('#echeancesdocs').data("isTest");
+
+        if( echeancesdocs[ idtype]=='Non'){
+            $('#datevalidite').css('display','none');
+        }else{
+            $('#datevalidite').css('display','block');
+        }
+
+        })
+    </script>
+    <script type="text/javascript" src="{{ asset('theme/datepicker/bootstrap-datepicker.min.js')}}" charset="UTF-8"></script>
+    <script type="text/javascript" src="{{ asset('theme/datepicker/bootstrap-datepicker.fr.min.js')}}" charset="UTF-8"></script>
+    <script type="text/javascript">
+        $("#datetime1").datepicker({
+            language:  'fr',
+            format: 'dd-mm-yyyy',
+            autoclose: true
+        });
+
+    </script>
+{% endblock %}
